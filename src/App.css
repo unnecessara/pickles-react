@@ -29,6 +29,36 @@ body {
     cursor: pointer;
 }
 
+.menu-btns {
+    text-align: right;
+    margin-top: 40px;
+    margin-right: 20px;
+}
+
+.menu-btns div, .menu-btns label {
+    display: block;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.menu-btns div i {
+    color: #272727;
+}
+
+.menu-btns div i:hover, input[type="radio"]:hover+i {
+    color: #FCFC62;
+}
+
+.menu-btns input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    /* hidden but still tabable */
+}
+
+.menu-btns input[type="radio"]:checked+i {
+    color: #FCFC62;
+}
+
 .main-content {
     min-height: 100%;
     margin-top: 200px;
