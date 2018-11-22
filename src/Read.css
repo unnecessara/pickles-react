@@ -1,0 +1,13 @@
+.read-btns div{
+    display: inline;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.read-btns div i {
+    color: #272727;
+}
+
+.read-btns div i:hover {
+    color: #FCFC62;
+}

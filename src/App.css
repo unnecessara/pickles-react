@@ -8,37 +8,22 @@ body {
     font-family: 'Assistant', sans-serif;
 }
 
-#menu {
+#logo {
     position: absolute;
     top: 50px;
     right: 50px;
 }
 
-#title-img-up {
+#logo img {
     width: 60px;
     height: 92px;
     position: relative;
-    cursor: pointer;
-}
-
-#title-img-down {
-    width: 156px;
-    height: 70px;
-    position: relative;
-    top: 30px;
-    cursor: pointer;
-}
-
-.menu-btns {
-    text-align: right;
-    margin-top: 40px;
-    margin-right: 20px;
 }
 
 .menu-btns div, .menu-btns label {
-    display: block;
+    display: inline;
     cursor: pointer;
-    margin-bottom: 10px;
+    padding: 10px;
 }
 
 .menu-btns div i {

@@ -1,0 +1,19 @@
+.write-btns label {
+    display: inline;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.write-btns input[type="radio"]:hover+i {
+    color: #FCFC62;
+}
+
+.write-btns input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    /* hidden but still tabable */
+}
+
+.write-btns input[type="radio"]:checked+i {
+    color: #FCFC62;
+}
