@@ -1,4 +1,4 @@
-.read-btns div{
+.read-btns div {
     display: inline;
     cursor: pointer;
     padding: 10px;
@@ -10,4 +10,9 @@
 
 .read-btns div i:hover {
     color: #FCFC62;
+}
+
+.pickle-content {
+    height: 400px;
+    font-size: 30px;
 }
