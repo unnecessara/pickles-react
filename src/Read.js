@@ -5,40 +5,26 @@ import React, { Component } from 'react';
 
 
 class Read extends Component {
-	constructor(props) {
-        super(props);
-        let randomPickle = this.props.pickles[Math.floor(Math.random() * this.props.pickles.length)]
-		this.state = {
-            currentPickle: randomPickle,
-			color: 'red'
-		};
-	}
 
 	handleRefreshClick = () => {
-		console.log('Refresh Clicked!');
-		this.setState((state, props) => {
-			const pickles = props.pickles;
-			return {
-				currentPickle:
-					pickles[Math.floor(Math.random() * pickles.length)]
-			};
-		});
+        this.props.refreshPickle();
 	};
 
 	handleEditClick = () => {
-		console.log('Edit Clicked!');
+        this.props.editPickle(this.props.pickle.id);
 	};
 
 	handleDeleteClick = () => {
-		console.log('Delete Clicked!');
+        this.props.removePickle(this.props.pickle.id);
 	};
 
 	render() {
-		return (
-			<div>
-				<div className="pickle-content">{this.state.currentPickle.content}</div>
+		return <div>
+				<div className="pickle-content">
+					{this.props.pickle.content}
+				</div>
 				<div className="read-btns">
-					<div id="delete-btn" onClick={this.handleDeleteClick}>
+                <div id="delete-btn" onClick = {this.handleDeleteClick}>
 						<i className="fas fa-trash" />
 					</div>
 					<div id="edit-btn" onClick={this.handleEditClick}>
@@ -48,8 +34,7 @@ class Read extends Component {
 						<i className="fas fa-redo" />
 					</div>
 				</div>
-			</div>
-		);
+			</div>;
 	}
 }
 

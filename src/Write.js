@@ -9,31 +9,31 @@ class Write extends Component {
 	constructor(props) {
         super(props);
 
-        const randomPrompt = this.props.prompts[Math.floor(Math.random() * this.props.prompts.length)];
-        const today = new Date();
-        const date = new Intl.DateTimeFormat('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: '2-digit'
-        }).format(today);
+        const initialContent = this.props.editMode ? this.props.pickle.content : this.props.prompts[Math.floor(Math.random() * this.props.prompts.length)];
+        const initialAlignment = this.props.editMode ? this.props.pickle.alignment : 'left';
+        const initialDate = this.props.editMode ? this.props.pickle.timestamp : new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: '2-digit'}).format(new Date());;
+        const initialHasEnteredText = this.props.editMode ? true : false;
 
 		this.initialState = {
-            content: randomPrompt,
-            alignment: 'left',
-            timestamp: date
+            content: initialContent,
+            alignment: initialAlignment,
+            timestamp: initialDate,
+            hasEnteredText: initialHasEnteredText,
 		};
 		this.state = this.initialState;
 	}
 
 	handleContentChange = event => {
-		const { name, value } = event.target;
+        const newContent = event.target.value;
+        const hasNewContent = newContent.length === 0 ? false : true;
 		this.setState({
-			[name]: value
-		});
+            content: newContent,
+            hasEnteredText: hasNewContent
+        });
     };
     
     handleAlignmentChange = changeEvent => {
-        let selectedAlignment = changeEvent.target.value;
+        const selectedAlignment = changeEvent.target.value;
         console.log('Alignment changed to: ' + selectedAlignment);
         this.setState({
             alignment: selectedAlignment
@@ -41,8 +41,11 @@ class Write extends Component {
     };
 
     refreshPrompt = () => {
-        let prompts = this.props.prompts;
-        let randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+        const prompts = this.props.prompts;
+        let randomPrompt = this.state.content;
+        while (randomPrompt === this.state.content) {
+            randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+        }
         this.setState({
             content: randomPrompt
         });
@@ -64,7 +67,7 @@ class Write extends Component {
                             rows="15"
                             cols="90"
                             onChange={this.handleContentChange}
-                            style = {{textAlign: this.state.alignment}}
+                            style={{ textAlign: this.state.alignment}}
                             value = {this.state.content}
                             autoFocus
                         />
@@ -118,11 +121,7 @@ class Write extends Component {
                         />
                     </div>
                 </form>
-                <button
-                    onClick={this.refreshPrompt}
-                >
-                    Refresh Prompt
-                </button>
+                {!this.state.hasEnteredText && <button onClick={this.refreshPrompt}>Refresh Prompt</button>}
             </div>
 		);
 	}
