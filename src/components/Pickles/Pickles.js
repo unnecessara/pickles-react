@@ -1,53 +1,12 @@
-
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
 import React, { Component } from 'react';
-import './App.css';
-import Write from './Write';
-import Read from './Read';
+import Write from '../Write/Write';
+import Read from '../Read/Read';
+import PicklesTable from '../PicklesTable/PicklesTable'
 
-
-class PicklesTable extends Component {
-	render() {
-		return <table className="table">
-				<TableHeader />
-				<TableBody pickles={this.props.pickles} removePickle={this.props.removePickle} />
-			</table>;
-	}
-}
-
-const TableHeader = () => {
-	return (
-		<thead>
-			<tr>
-                <th>ID</th>
-				<th>Content</th>
-				<th>Alignment</th>
-				<th>Date</th>
-				<th>Remove</th>
-			</tr>
-		</thead>
-	);
-}
-
-const TableBody = props => {
-	const rows = props.pickles.map((pickle, index) => {
-		return <tr key={index}>
-                <td>{pickle.id}</td>
-				<td>{pickle.content}</td>
-				<td>{pickle.alignment}</td>
-				<td>{pickle.timestamp}</td>
-				<td><button onClick={()=> props.removePickle(index)}>Delete</button></td>
-			</tr>;
-	});
-
-	return <tbody>{rows}</tbody>;
-}
-
-class App extends Component {
-	constructor(props) {
+class Pickles extends Component {
+    constructor(props) {
         super(props);
-        
+
         const picklesList = [
             {
                 id: 0,
@@ -63,7 +22,7 @@ class App extends Component {
             },
             {
                 id: 2,
-                content: 'some shit',
+                content: 'some stuff',
                 alignment: 'center',
                 timestamp: 'October 19, 2018'
             },
@@ -122,14 +81,14 @@ class App extends Component {
         }).format(today);
         const todayPickleExists = picklesList.find((pickle) => pickle.timestamp === date);
 
-        this.state = { 
-			pickles: picklesList,
+        this.state = {
+            pickles: picklesList,
             prompts: promptsList,
             currentPickle: picklesList[Math.floor(Math.random() * picklesList.length)],
             editMode: false,
             hasWrittenToday: todayPickleExists,
         };
-	}
+    }
 
     editPickle = (id) => {
         const pickles = this.state.pickles;
@@ -141,18 +100,18 @@ class App extends Component {
         })
     }
 
-	removePickle = (id) => {
+    removePickle = (id) => {
         const pickles = this.state.pickles;
         const deleteAt = pickles.findIndex((pickle) => pickle.id === id);
         const newPicklesList = pickles.filter((pickle, i) => i !== deleteAt);
-		this.setState({
-			pickles: newPicklesList,
-			currentPickle: newPicklesList.length === 0 ? null : newPicklesList[Math.floor(Math.random() * newPicklesList.length)]
-		});
+        this.setState({
+            pickles: newPicklesList,
+            currentPickle: newPicklesList.length === 0 ? null : newPicklesList[Math.floor(Math.random() * newPicklesList.length)]
+        });
     }
-    
+
     refreshCurrentPickle = () => {
-        let randomPickle= this.state.currentPickle;
+        let randomPickle = this.state.currentPickle;
         // Avoids randomizing if there is only one pickle
         if (this.state.pickles.length > 1) {
             while (randomPickle.id === this.state.currentPickle.id) {
@@ -164,7 +123,7 @@ class App extends Component {
         });
     }
 
-	handleSubmit = (pickle) => {
+    handleSubmit = (pickle) => {
         let newPicklesList = this.state.pickles;
 
         if (this.state.editMode) {
@@ -184,26 +143,26 @@ class App extends Component {
             currentPickle: newPicklesList[Math.floor(Math.random() * newPicklesList.length)],
             editMode: false,
             hasWrittenToday: true
-        }); 
-	}
+        });
+    }
 
-	render() {
+    render() {
         // Show read or write depending on if user has written a pickle today
         let modeContent = (this.state.hasWrittenToday && this.state.pickles.length > 0) ? <Read pickle={this.state.currentPickle} refreshPickle={this.refreshCurrentPickle} editPickle={this.editPickle} removePickle={this.removePickle} />
-                                                                                        : <Write pickle={this.state.currentPickle} editMode={this.state.editMode} prompts={this.state.prompts} handleSubmit={this.handleSubmit}/>;
-		return (
-			<div>
+            : <Write pickle={this.state.currentPickle} editMode={this.state.editMode} prompts={this.state.prompts} handleSubmit={this.handleSubmit} />;
+        return (
+            <div>
                 <div id="logo">
-                    <img src={require('./picklesUp.png')} alt="pickles up" />
+                    <img src={require('../../img/picklesUp.png')} alt="pickles up" />
                 </div>
-				<div className="container main-content">
+                <div className="container main-content">
                     {modeContent}
 
-					<PicklesTable pickles={this.state.pickles} removePickle={this.removePickle} />
-				</div>
-			</div>
-		);
-	}
+                    <PicklesTable pickles={this.state.pickles} removePickle={this.removePickle} />
+                </div>
+            </div>
+        );
+    }
 }
 
-export default App;
+export default Pickles;
