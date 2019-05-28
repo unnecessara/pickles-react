@@ -1,3 +1,9 @@
+.pickle-content {
+    height: 380px;
+    font-size: 26px;
+    padding: 50px 10px;
+}
+
 .read-btns div {
     display: inline;
     cursor: pointer;
@@ -9,10 +15,5 @@
 }
 
 .read-btns div i:hover {
-    color: #FCFC62;
-}
-
-.pickle-content {
-    height: 400px;
-    font-size: 30px;
+    color: rgb(28, 184, 65);
 }

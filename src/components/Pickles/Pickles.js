@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Write from '../Write/Write';
 import Read from '../Read/Read';
 import PicklesTable from '../PicklesTable/PicklesTable'
+import './Pickles.css';
+import 'purecss/build/pure.css';
 
 class Pickles extends Component {
     constructor(props) {
@@ -148,18 +150,36 @@ class Pickles extends Component {
 
     render() {
         // Show read or write depending on if user has written a pickle today
-        let modeContent = (this.state.hasWrittenToday && this.state.pickles.length > 0) ? <Read pickle={this.state.currentPickle} refreshPickle={this.refreshCurrentPickle} editPickle={this.editPickle} removePickle={this.removePickle} />
+        let modeContent = (this.state.hasWrittenToday && this.state.pickles.length > 0) ? 
+            <Read pickle={this.state.currentPickle} refreshPickle={this.refreshCurrentPickle} editPickle={this.editPickle} removePickle={this.removePickle} />
             : <Write pickle={this.state.currentPickle} editMode={this.state.editMode} prompts={this.state.prompts} handleSubmit={this.handleSubmit} />;
         return (
             <div>
-                <div id="logo">
-                    <img src={require('../../img/picklesUp.png')} alt="pickles up" />
+                <div className="pure-g">
+                    <div className="pure-u-1-5" />
+                    <div className="pure-u-3-5">
+                        <div className="logo">
+                            <img
+                                src={require('../../img/picklesUp.png')}
+                                alt="pickles up"
+                            />
+                        </div>
+                        <div className="content-container">
+                            {modeContent}
+                        </div>
+                    </div>
+                    <div className="pure-u-1-5" />
                 </div>
-                <div className="container main-content">
-                    {modeContent}
 
-                    <PicklesTable pickles={this.state.pickles} removePickle={this.removePickle} />
-                </div>
+                {/* Uncomment for troubleshooting save and delete */}
+                {/* <div className="pure-u-1">
+                        <div className="pickles-table-container">
+                            <PicklesTable
+                                pickles={this.state.pickles}
+                                removePickle={this.removePickle}
+                            />
+                        </div>
+                    </div> */}
             </div>
         );
     }

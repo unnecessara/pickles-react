@@ -1,11 +1,26 @@
+.input-area {
+    padding: 40px !important;
+}
+
+/* Alignment Buttons */
+
+.write-btns {
+    margin-top: 50px;
+}
+
 .write-btns label {
     display: inline;
     cursor: pointer;
     padding: 10px;
+    font-size: 18px;
+}
+
+.write-btns i {
+    line-height: 2;
 }
 
 .write-btns input[type="radio"]:hover+i {
-    color: #FCFC62;
+    color: rgb(28, 184, 65);
 }
 
 .write-btns input[type="radio"] {
@@ -15,5 +30,14 @@
 }
 
 .write-btns input[type="radio"]:checked+i {
-    color: #FCFC62;
+    color: rgb(28, 184, 65);
+}
+
+.save-btns {
+    text-align: right;
+    padding-right:10px;
+}
+
+.save-pickle-btn {
+    margin-left: 10px;
 }
