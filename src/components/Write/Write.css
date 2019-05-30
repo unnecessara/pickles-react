@@ -4,10 +4,6 @@
 
 /* Alignment Buttons */
 
-.write-btns {
-    margin-top: 50px;
-}
-
 .write-btns label {
     display: inline;
     cursor: pointer;

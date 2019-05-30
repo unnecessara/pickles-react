@@ -1,7 +1,9 @@
 .pickle-content {
-    height: 380px;
+    height: 370px;
     font-size: 26px;
     padding: 50px 10px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
 }
 
 .read-btns div {
