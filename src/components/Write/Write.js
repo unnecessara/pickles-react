@@ -1,7 +1,6 @@
-
 import './Write.css';
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 
 class Write extends Component {
 
@@ -161,5 +160,12 @@ class Write extends Component {
         );
 	}
 }
+
+Write.propTypes = {
+    pickle: PropTypes.object,
+    editMode: PropTypes.bool,
+    prompts: PropTypes.array,
+    handleSubmit: PropTypes.func,
+};
 
 export default Write;

@@ -1,6 +1,6 @@
 import './Read.css';
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 
 class Read extends Component {
 
@@ -35,5 +35,12 @@ class Read extends Component {
 			</div>;
 	}
 }
+
+Read.propTypes = {
+    pickle: PropTypes.object,
+    refreshPickle: PropTypes.func,
+    editPickle: PropTypes.func,
+    removePickle: PropTypes.func
+};
 
 export default Read;

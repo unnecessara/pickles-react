@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Write from '../Write/Write';
 import Read from '../Read/Read';
-import PicklesTable from '../PicklesTable/PicklesTable'
+// import PicklesTable from '../PicklesTable/PicklesTable'
 import './Pickles.css';
 import 'purecss/build/pure.css';
 
