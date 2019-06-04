@@ -1,39 +1,28 @@
 .input-area {
-    padding: 40px !important;
+    padding: 40px;
 }
 
 /* Alignment Buttons */
 
-.write-btns label {
-    display: inline;
+.alignment-btns label {
     cursor: pointer;
-    padding: 10px;
     font-size: 18px;
 }
 
-.write-btns i {
+.alignment-btns i {
     line-height: 2;
 }
 
-.write-btns input[type="radio"]:hover+i {
+.form-check-input:hover+i {
     color: rgb(28, 184, 65);
 }
 
-.write-btns input[type="radio"] {
+.form-check-input {
     position: absolute;
     opacity: 0;
     /* hidden but still tabable */
 }
 
-.write-btns input[type="radio"]:checked+i {
+.form-check-input:checked+i {
     color: rgb(28, 184, 65);
-}
-
-.save-btns {
-    text-align: right;
-    padding-right:10px;
-}
-
-.save-pickle-btn {
-    margin-left: 10px;
 }

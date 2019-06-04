@@ -1,3 +1,4 @@
+import {Form, Button, Row, Col} from 'react-bootstrap';
 import './Write.css';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -57,9 +58,10 @@ class Write extends Component {
 	render() {
 		return (
             <div>
-                <form className="pure-form">
-                    <fieldset className="pure-group">
-                        <textarea
+                <Form>
+                    <Form.Group controlId="writeForm">
+                        <Form.Control
+                            as="textarea"
                             name="content"
                             className="input-area"
                             rows="15"
@@ -71,91 +73,150 @@ class Write extends Component {
                             value={this.state.content}
                             autoFocus
                         />
-                    </fieldset>
-                    <fieldset className="write-btns">
-                        <div className="pure-g">
-                            <div className="pure-u-2-5">
-                                <label className="alignment-btn">
-                                    <input
-                                        type="radio"
-                                        id="btn-left"
-                                        name="alignment-option"
-                                        value="left"
-                                        autoComplete="off"
-                                        checked={
-                                            this.state.alignment ===
-                                            'left'
-                                        }
-                                        onChange={
-                                            this.handleAlignmentChange
-                                        }
-                                    />
-                                    <i className="fas fa-align-left" />
-                                </label>
-                                <label className="alignment-btn">
-                                    <input
-                                        type="radio"
-                                        id="btn-center"
-                                        name="alignment-option"
-                                        value="center"
-                                        autoComplete="off"
-                                        checked={
-                                            this.state.alignment ===
-                                            'center'
-                                        }
-                                        onChange={
-                                            this.handleAlignmentChange
-                                        }
-                                    />
-                                    <i className="fas fa-align-center" />
-                                </label>
-                                <label className="alignment-btn">
-                                    <input
-                                        type="radio"
-                                        id="btn-right"
-                                        name="alignment-option"
-                                        value="right"
-                                        autoComplete="off"
-                                        checked={
-                                            this.state.alignment ===
-                                            'right'
-                                        }
-                                        onChange={
-                                            this.handleAlignmentChange
-                                        }
-                                    />
-                                    <i className="fas fa-align-right" />
-                                </label>
-                            </div>
-                            <div className="pure-u-1-5">
-                                <p />
-                            </div>
-                            <div className="pure-u-2-5">
-                                <div className="save-btns">
-                                    <input
-                                        type="hidden"
-                                        name="timestamp"
-                                        value={this.state.timestamp}
-                                    />
-                                    {!this.state.hasEnteredText && (
-                                        <button
-                                            className="pure-button button-small"
-                                            onClick={this.refreshPrompt}
-                                        >
-                                            Refresh Prompt
-                                        </button>
-                                    )}
-                                    <button
-                                        className="pure-button pure-button-primary save-pickle-btn"
-                                        onClick={this.submitForm}
+                    </Form.Group>
+                    <Form.Group>
+                        <Row className="mb-1">
+                            <Col key="inline-radio" className="alignment-btns">
+                                <Form.Check
+                                    inline
+                                    type="radio"
+                                >
+                                    <Form.Check.Label>
+                                        <Form.Check.Input 
+                                            type="radio" 
+                                            id="btn-left"
+                                            name="alignment-option"
+                                            value="left"
+                                            autoComplete="off"
+                                            checked={this.state.alignment === 'left'}
+                                            onChange={this.handleAlignmentChange}
+                                        />
+                                        <i className="fas fa-align-left" />
+                                    </Form.Check.Label>
+                                </Form.Check>
+                                <Form.Check
+                                    inline
+                                    type="radio"
+                                >
+                                    <Form.Check.Label>
+                                        <Form.Check.Input 
+                                            type="radio" 
+                                            id="btn-center"
+                                            name="alignment-option"
+                                            value="center"
+                                            autoComplete="off"
+                                            checked={this.state.alignment === 'center'}
+                                            onChange={this.handleAlignmentChange}
+                                        />
+                                        <i className="fas fa-align-center" />
+                                    </Form.Check.Label>
+                                </Form.Check>
+                                <Form.Check
+                                    inline
+                                    type="radio"
+                                >
+                                    <Form.Check.Label>
+                                        <Form.Check.Input 
+                                            type="radio" 
+                                            id="btn-right"
+                                            name="alignment-option"
+                                            value="right"
+                                            autoComplete="off"
+                                            checked={this.state.alignment === 'right'}
+                                            onChange={this.handleAlignmentChange}
+                                        />
+                                        <i className="fas fa-align-right" />
+                                    </Form.Check.Label>
+                                </Form.Check>
+                            </Col>
+                            <Col className="text-right">
+                                <input
+                                    type="hidden"
+                                    name="timestamp"
+                                    value={this.state.timestamp}
+                                />
+                                {!this.state.hasEnteredText && (
+                                    <Button
+                                        variant="outline-secondary"
+                                        onClick={this.refreshPrompt}
                                     >
-                                        Pickle This
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
+                                        Refresh Prompt
+                                    </Button>
+                                )}
+                                <Button
+                                    className="ml-1"
+                                    variant="outline-success"
+                                    onClick={this.submitForm}
+                                >
+                                    Pickle This Please
+                                </Button>
+                            </Col>
+                        </Row>
+                    </Form.Group>
+
+                    {/* <Form.Group>
+                        <Form.Label className="alignment-btn">
+                            <i className="fas fa-align-left" />
+                        </Form.Label>
+                        <input
+                            type="radio"
+                            id="btn-left"
+                            name="alignment-option"
+                            value="left"
+                            autoComplete="off"
+                            checked={this.state.alignment === 'left'}
+                            onChange={this.handleAlignmentChange}
+                        />
+
+                        <label className="alignment-btn">
+                            <input
+                                type="radio"
+                                id="btn-center"
+                                name="alignment-option"
+                                value="center"
+                                autoComplete="off"
+                                checked={
+                                    this.state.alignment === 'center'
+                                }
+                                onChange={this.handleAlignmentChange}
+                            />
+                            <i className="fas fa-align-center" />
+                        </label>
+                        <label className="alignment-btn">
+                            <input
+                                type="radio"
+                                id="btn-right"
+                                name="alignment-option"
+                                value="right"
+                                autoComplete="off"
+                                checked={
+                                    this.state.alignment === 'right'
+                                }
+                                onChange={this.handleAlignmentChange}
+                            />
+                            <i className="fas fa-align-right" />
+                        </label>
+                        <input
+                            type="hidden"
+                            name="timestamp"
+                            value={this.state.timestamp}
+                        />
+                        {!this.state.hasEnteredText && (
+                            <button
+                                className="pure-button button-small"
+                                onClick={this.refreshPrompt}
+                            >
+                                Refresh Prompt
+                            </button>
+                        )}
+                        <button
+                            className="pure-button pure-button-primary save-pickle-btn"
+                            onClick={this.submitForm}
+                        >
+                            Pickle This
+                        </button>
+                    </Form.Group> */}
+                </Form>
             </div>
         );
 	}

@@ -1,4 +1,7 @@
+.container {
+    max-width: 800px;
+}  
+
 .app-header, .app-footer {
     height: 60px;
-    /* background-color: teal; */
 }
