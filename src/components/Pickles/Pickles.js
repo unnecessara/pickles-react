@@ -155,7 +155,7 @@ class Pickles extends Component {
             : <Write pickle={this.state.currentPickle} editMode={this.state.editMode} prompts={this.state.prompts} handleSubmit={this.handleSubmit} />;
         return (
             <div>
-                <Row>
+                <Row className="justify-content-md-center">
                     <div className="logo">
                         <img
                             src={require('../../img/picklesUp.png')}

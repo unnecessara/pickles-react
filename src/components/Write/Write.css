@@ -1,5 +1,7 @@
 .input-area {
     padding: 40px;
+    border: none;
+    background-color: #F9F9FA;
 }
 
 /* Alignment Buttons */
@@ -7,6 +9,7 @@
 .alignment-btns label {
     cursor: pointer;
     font-size: 18px;
+    color: #6c757d;
 }
 
 .alignment-btns i {

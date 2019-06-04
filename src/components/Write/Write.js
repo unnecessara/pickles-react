@@ -137,6 +137,7 @@ class Write extends Component {
                                 />
                                 {!this.state.hasEnteredText && (
                                     <Button
+                                        size="sm"
                                         variant="outline-secondary"
                                         onClick={this.refreshPrompt}
                                     >
@@ -144,6 +145,7 @@ class Write extends Component {
                                     </Button>
                                 )}
                                 <Button
+                                    size="sm"
                                     className="ml-1"
                                     variant="outline-success"
                                     onClick={this.submitForm}
