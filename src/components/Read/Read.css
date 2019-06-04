@@ -1,9 +1,14 @@
+.read-container {
+    width: 100%;
+}
+
 .pickle-content {
     height: 370px;
     font-size: 26px;
-    padding: 50px 10px;
+    padding: 10px 10px;
     overflow-y: scroll;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
+    /* background-color: gray; */
 }
 
 .read-btns div {
@@ -13,7 +18,7 @@
 }
 
 .read-btns div i {
-    color: #272727;
+    color: #6c757d;
 }
 
 .read-btns div i:hover {
