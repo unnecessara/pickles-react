@@ -155,69 +155,6 @@ class Write extends Component {
                             </Col>
                         </Row>
                     </Form.Group>
-
-                    {/* <Form.Group>
-                        <Form.Label className="alignment-btn">
-                            <i className="fas fa-align-left" />
-                        </Form.Label>
-                        <input
-                            type="radio"
-                            id="btn-left"
-                            name="alignment-option"
-                            value="left"
-                            autoComplete="off"
-                            checked={this.state.alignment === 'left'}
-                            onChange={this.handleAlignmentChange}
-                        />
-
-                        <label className="alignment-btn">
-                            <input
-                                type="radio"
-                                id="btn-center"
-                                name="alignment-option"
-                                value="center"
-                                autoComplete="off"
-                                checked={
-                                    this.state.alignment === 'center'
-                                }
-                                onChange={this.handleAlignmentChange}
-                            />
-                            <i className="fas fa-align-center" />
-                        </label>
-                        <label className="alignment-btn">
-                            <input
-                                type="radio"
-                                id="btn-right"
-                                name="alignment-option"
-                                value="right"
-                                autoComplete="off"
-                                checked={
-                                    this.state.alignment === 'right'
-                                }
-                                onChange={this.handleAlignmentChange}
-                            />
-                            <i className="fas fa-align-right" />
-                        </label>
-                        <input
-                            type="hidden"
-                            name="timestamp"
-                            value={this.state.timestamp}
-                        />
-                        {!this.state.hasEnteredText && (
-                            <button
-                                className="pure-button button-small"
-                                onClick={this.refreshPrompt}
-                            >
-                                Refresh Prompt
-                            </button>
-                        )}
-                        <button
-                            className="pure-button pure-button-primary save-pickle-btn"
-                            onClick={this.submitForm}
-                        >
-                            Pickle This
-                        </button>
-                    </Form.Group> */}
                 </Form>
             </div>
         );
