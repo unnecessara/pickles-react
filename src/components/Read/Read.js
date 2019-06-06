@@ -1,3 +1,4 @@
+import {Row, Col} from 'react-bootstrap';
 import './Read.css';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -17,22 +18,37 @@ class Read extends Component {
 	};
 
 	render() {
-		return <div>
-				<div className="pickle-content">
-					{this.props.pickle.content}
-				</div>
-				<div className="read-btns">
-                <div id="delete-btn" onClick = {this.handleDeleteClick}>
-						<i className="fas fa-trash" />
-					</div>
-					<div id="edit-btn" onClick={this.handleEditClick}>
-						<i className="fas fa-pen" />
-					</div>
-					<div id="refresh-btn" onClick={this.handleRefreshClick}>
-						<i className="fas fa-redo" />
-					</div>
-				</div>
-			</div>;
+		return (
+            <div className="read-container">
+                <Row>
+                    <Col 
+                        className="pickle-content"
+                        style={{
+                            textAlign: this.props.pickle.alignment
+                        }}
+                    >
+                        {this.props.pickle.content}
+                    </Col>
+                </Row>
+                <Row className="read-btns justify-content-md-center">
+                    <div
+                        id="delete-btn"
+                        onClick={this.handleDeleteClick}
+                    >
+                        <i className="fas fa-trash" />
+                    </div>
+                    <div id="edit-btn" onClick={this.handleEditClick}>
+                        <i className="fas fa-pen" />
+                    </div>
+                    <div
+                        id="refresh-btn"
+                        onClick={this.handleRefreshClick}
+                    >
+                        <i className="fas fa-redo" />
+                    </div>
+                </Row>
+            </div>
+        );
 	}
 }
 
